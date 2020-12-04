@@ -28,7 +28,7 @@ func main() {
 
 	gxlog.CInfo("response result: %v\n", res)
 
-	user := User{
+	user := &User{
 		Name: "tc",
 		Age:  18,
 	}
@@ -46,6 +46,20 @@ func main() {
 	}
 
 	gxlog.CInfo("response result: %v\n", res)
+
+	//res, err = demoProvider.SayHello4(context.TODO(), user)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//gxlog.CInfo("response result: %v\n", res)
+	//
+	//res, err = demoProvider.SayHello5(context.TODO(), user, "tc")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//gxlog.CInfo("response result: %v\n", res)
 
 	initSignal()
 }

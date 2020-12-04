@@ -31,9 +31,12 @@ func (User) JavaClassName() string {
 }
 
 type DemoProvider struct {
-	SayHello  func(ctx context.Context, name string) (string, error)           `dubbo:"sayHello"`
-	SayHello2 func(ctx context.Context, user User) (string, error)             `dubbo:"sayHello"`
-	SayHello3 func(ctx context.Context, user User, name string) (string, error) `dubbo:"sayHello"`
+	SayHello  func(ctx context.Context, name string) (string, error)             `dubbo:"sayHello"`
+	SayHello2 func(ctx context.Context, user *User) (string, error)              `dubbo:"sayHello"`
+	SayHello3 func(ctx context.Context, user *User, name string) (string, error) `dubbo:"sayHello"`
+	SayHello4 func(ctx context.Context, user *User) (string, error)
+	//SayHello4 func(ctx context.Context, user User) (string, error)
+	SayHello5 func(ctx context.Context, user *User, name string) (string, error)
 }
 
 func (p *DemoProvider) Reference() string {
