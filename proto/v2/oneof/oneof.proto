@@ -1,0 +1,10 @@
+message SampleMessage {
+  oneof test_oneof {
+    string name = 4;
+    SubMessage sub_message = 9;
+  }
+}
+
+message SubMessage {
+  optional string name = 1;
+}
