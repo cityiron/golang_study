@@ -8,10 +8,13 @@ type Dinner2 interface {
 	beforeCooking()
 	doCooking() string
 	afterCooking()
+	DoDinner(d Dinner2)
 }
 
 // AbstractDinner 类似于抽象类
 type AbstractDinner struct {
+	Dinner2
+	Name string
 }
 
 func (AbstractDinner) foodEnough() bool {
@@ -22,17 +25,7 @@ func (AbstractDinner) doShopping() {
 	fmt.Println("门口小贩买菜")
 }
 
-func (AbstractDinner) beforeCooking() {
-}
-
-func (AbstractDinner) doCooking() string {
-	return ""
-}
-
-func (AbstractDinner) afterCooking() {
-}
-
-func DoDinner(d Dinner2) {
+func (ad AbstractDinner) DoDinner(d Dinner2) {
 	if !d.foodEnough() {
 		d.doShopping()
 	}
@@ -40,64 +33,93 @@ func DoDinner(d Dinner2) {
 	d.beforeCooking()
 	fmt.Println(d.doCooking())
 	d.afterCooking()
+	ad.eat()
+}
+
+func (ad AbstractDinner) eat() {
+	fmt.Println(fmt.Sprintf("%sMM说：开吃喽", ad.Name))
 }
 
 type HangzhouDinner struct {
 	AbstractDinner
 }
 
-func (*HangzhouDinner) foodEnough() bool {
+func NewHangzhouDinner(name string) Dinner2 {
+	return &HangzhouDinner{
+		AbstractDinner{
+			Name: name,
+		},
+	}
+}
+
+func (d *HangzhouDinner) foodEnough() bool {
 	return false
 }
 
-func (*HangzhouDinner) beforeCooking() {
-	fmt.Println("杭州MM 在洗菜切菜")
+func (d *HangzhouDinner) beforeCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 在洗菜切菜", d.Name))
 }
 
-func (*HangzhouDinner) doCooking() string {
-	return "杭州MM 在做杭州菜"
+func (d *HangzhouDinner) doCooking() string {
+	return fmt.Sprintf("%sMM 在做%s菜", d.Name, d.Name)
 }
 
-func (*HangzhouDinner) afterCooking() {
-	fmt.Println("杭州MM 让你去品尝")
+func (d *HangzhouDinner) afterCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 让你去品尝", d.Name))
 }
 
 type BeijingDinner struct {
 	AbstractDinner
 }
 
-func (*BeijingDinner) beforeCooking() {
-	fmt.Println("北京MM 在洗菜切菜")
+func NewBeijingDinner(name string) Dinner2 {
+	return &BeijingDinner{
+		AbstractDinner{
+			Name: name,
+		},
+	}
 }
 
-func (*BeijingDinner) doCooking() string {
-	return "北京MM 在做北京菜"
+func (d *BeijingDinner) beforeCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 在洗菜切菜", d.Name))
 }
 
-func (*BeijingDinner) afterCooking() {
-	fmt.Println("北京MM 让你去品尝")
+func (d *BeijingDinner) doCooking() string {
+	return fmt.Sprintf("%sMM 在做%s菜", d.Name, d.Name)
+}
+
+func (d *BeijingDinner) afterCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 让你去品尝", d.Name))
 }
 
 type TaiwanDinner struct {
 	AbstractDinner
 }
 
-func (*TaiwanDinner) foodEnough() bool {
+func NewTaiwanDinner(name string) Dinner2 {
+	return &TaiwanDinner{
+		AbstractDinner{
+			Name: name,
+		},
+	}
+}
+
+func (d *TaiwanDinner) foodEnough() bool {
 	return false
 }
 
-func (*TaiwanDinner) doShopping() {
+func (d *TaiwanDinner) doShopping() {
 	fmt.Println("生鲜超市购买，一定要买茶叶蛋")
 }
 
-func (*TaiwanDinner) beforeCooking() {
-	fmt.Println("台湾MM 在洗菜切菜")
+func (d *TaiwanDinner) beforeCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 在洗菜切菜", d.Name))
 }
 
-func (*TaiwanDinner) doCooking() string {
-	return "台湾MM 在做台湾菜"
+func (d *TaiwanDinner) doCooking() string {
+	return fmt.Sprintf("%sMM 在做%s菜", d.Name, d.Name)
 }
 
-func (*TaiwanDinner) afterCooking() {
-	fmt.Println("台湾MM 让你去品尝")
+func (d *TaiwanDinner) afterCooking() {
+	fmt.Println(fmt.Sprintf("%sMM 让你去品尝", d.Name))
 }
