@@ -42,9 +42,3 @@ type DemoProvider struct {
 func (p *DemoProvider) Reference() string {
 	return "DemoProvider"
 }
-
-func (p *DemoProvider) MethodMapper() map[string]string {
-	return map[string]string{
-		"SayHello": "SayHello",
-	}
-}
