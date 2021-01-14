@@ -36,33 +36,33 @@ func main() {
 		Age:  18,
 	}
 
-	//res, err = demoProvider.SayHello2(context.TODO(), user)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
-	//gxlog.CInfo("response result: %v\n", res)
-	//
-	//res, err = demoProvider.SayHello3(context.TODO(), user, "tc")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
-	//gxlog.CInfo("response result: %v\n", res)
-
-	res, err = demoProvider.SayHello4(context.TODO(), user)
+	res, err = demoProvider.SayHello2(context.TODO(), user)
 	if err != nil {
 		panic(err)
 	}
 
 	gxlog.CInfo("response result: %v\n", res)
 
-	res, err = demoProvider.SayHello5(context.TODO(), user, "tc")
+	res, err = demoProvider.SayHello3(context.TODO(), user, "tc")
 	if err != nil {
 		panic(err)
 	}
 
 	gxlog.CInfo("response result: %v\n", res)
+
+	//res, err = demoProvider.SayHello4(context.TODO(), user)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//gxlog.CInfo("response result: %v\n", res)
+	//
+	//res, err = demoProvider.SayHello5(context.TODO(), user, "tc")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//gxlog.CInfo("response result: %v\n", res)
 
 	initSignal()
 }
