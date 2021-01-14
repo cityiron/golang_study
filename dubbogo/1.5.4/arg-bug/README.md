@@ -51,7 +51,7 @@ docker pull ironc/gd-client-2-java:dgissue900
 docker run --network host --name dubbogo-client-2-java -it ironc/gd-client-2-java:dgissue900
 ```
 
-如果镜像方式无法启动，可以直接运行当前的 client/client.go 代码，配置 CONF_CONSUMER_FILE_PATH 变量
+如果镜像方式无法正常运行，可以直接运行当前的 client/client.go 代码，配置 CONF_CONSUMER_FILE_PATH 变量
 
 比如：
 
