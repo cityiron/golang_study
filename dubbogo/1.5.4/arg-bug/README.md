@@ -14,13 +14,6 @@ zkServer start
 docker run --name zookeeper -p2181:2181 -d zookeeper
 ```
 
-我在这个代码仓库中提供了一种更加方便的方式去启动 Zookeeper：
-
-```bash
-cd image
-make -f ../build/Makefile docker-up
-```
-
 ### 启动 dubbogo server
 
 ```bash
